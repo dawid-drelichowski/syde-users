@@ -1,0 +1,8 @@
+# Composer
+/vendor/
+
+#Docker
+docker-compose.yml
+
+#PhpUnit
+.phpunit.result.cache
