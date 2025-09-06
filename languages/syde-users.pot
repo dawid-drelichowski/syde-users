@@ -1,0 +1,45 @@
+# Copyright (C) 2025 Syde Users Plugin
+# This file is distributed under the same license as the Syde Users Plugin package.
+# FIRST AUTHOR <dawid.drelichowski@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Syde-users 1.0.0\n"
+"POT-Creation-Date: 2025-09-05 12:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgid "Users List"
+msgstr ""
+
+msgid "User Details"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Phone"
+msgstr ""
+
+msgid "Website"
+msgstr ""
+
+msgid "Company"
+msgstr ""
+
+msgid "Address"
+msgstr ""
+
+msgid "Id"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Hide Details"
+msgstr ""
