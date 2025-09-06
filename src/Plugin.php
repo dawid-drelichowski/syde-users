@@ -45,7 +45,6 @@ final class Plugin {
 	private function setupHooks(): void {
 
 		add_action( 'init', array( $this, 'addRewriteRules' ) );
-		add_action( 'init', array( $this, 'addTranslations' ) );
 
 		add_action( 'template_redirect', array( $this->controller, 'handleRequest' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueueAssets' ) );
@@ -66,18 +65,6 @@ final class Plugin {
 			'top'
 		);
 		add_rewrite_tag( '%' . $this->usersQueryVar() . '%', '([^&]+)' );
-	}
-
-	/**
-	 * Load plugin translations
-	 */
-	public function addTranslations(): void {
-
-		load_plugin_textdomain(
-			SYDE_USERS_TEXTDOMAIN,
-			false,
-			SYDE_USERS_PLUGIN_PATH . '/languages/'
-		);
 	}
 
 	/**

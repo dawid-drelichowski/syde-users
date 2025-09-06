@@ -6,6 +6,8 @@
  * Author: Dawid Drelichowski
  * Requires PHP: 8.2
  * License: GPL-2.0-or-later
+ * Text Domain: syde-users
+ * Domain Path: /languages
  */
 
 // phpcs:disable Syde.PHP.DisallowTopLevelDefine.Found
@@ -14,7 +16,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 
 /* Plugin constants */
 define( 'SYDE_USERS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
