@@ -45,6 +45,7 @@ final class Plugin {
 	private function setupHooks(): void {
 
 		add_action( 'init', array( $this, 'addRewriteRules' ) );
+
 		add_action( 'template_redirect', array( $this->controller, 'handleRequest' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueueAssets' ) );
 
@@ -76,22 +77,28 @@ final class Plugin {
 		}
 
 		wp_enqueue_style(
-			'syde-users-table-css',
+			'syde-users-table',
 			SYDE_USERS_PLUGIN_URL . 'assets/css/user-table.css',
 			array(),
 			SYDE_USERS_PLUGIN_VERSION
 		);
 
 		wp_enqueue_script(
-			'syde-users-table-js',
+			'syde-users-table',
 			SYDE_USERS_PLUGIN_URL . 'assets/js/user-table.js',
-			array( 'jquery' ),
+			array( 'jquery', 'wp-i18n' ),
 			SYDE_USERS_PLUGIN_VERSION,
 			true
 		);
 
+		wp_set_script_translations(
+			'syde-users-table',
+			'syde-users',
+			SYDE_USERS_PLUGIN_PATH . 'languages'
+		);
+
 		wp_localize_script(
-			'syde-users-table-js',
+			'syde-users-table',
 			'sydeUsersAjax',
 			array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),

@@ -6,3 +6,6 @@ docker-compose.yml
 
 #PhpUnit
 .phpunit.result.cache
+
+#MacOS
+.DS_Store

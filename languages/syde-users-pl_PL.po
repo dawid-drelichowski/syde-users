@@ -1,0 +1,91 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Syde Users 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: Polish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-09-05 12:00+0000\n"
+"PO-Revision-Date: 2025-09-07T19:22:26+00:00\n"
+"Language: pl_PL\n"
+"X-Domain: syde-users\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "Syde Users"
+msgstr "Użytkownicy Syde"
+
+msgid "A WordPress plugin to display users from external API in a table format."
+msgstr "Plugin WordPress wyświetlający użytkowników pobranych z zewnętrznego API w formacie tabeli"
+
+msgid "Dawid Drelichowski"
+msgstr ""
+
+msgid "Unknown"
+msgstr "Nieznany"
+
+msgid "Username"
+msgstr "Nazwa użytkownika"
+
+msgid "N/A"
+msgstr "Brak danych"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Website"
+msgstr "Strona internetowa"
+
+msgid "Address"
+msgstr "Adres"
+
+msgid "Company"
+msgstr "Firma"
+
+msgid "Users List"
+msgstr "Lista użytkowników"
+
+msgid "No Users Available"
+msgstr "Brak użytkowników"
+
+msgid "Unable to load users from the external API. Please try again later."
+msgstr "Ne można załadować listy użytkowników z API. Spróbuj ponownie później"
+
+msgid "Id"
+msgstr "Id"
+
+msgid "Name"
+msgstr "Nazwa"
+
+msgid "User Details"
+msgstr "Szczegóły użytkownika"
+
+msgid "Close user details"
+msgstr "Zamykanie detali użytkownika"
+
+msgid "Error"
+msgstr "Błąd"
+
+#: assets/js/user-table.js:70
+msgid "Unknown error occurred"
+msgstr "Wystąpił nieznany błąd"
+
+#: assets/js/user-table.js:76
+msgid "Network error occurred. Please try again."
+msgstr "Błąd połaczenia sieciowego. Spróbuj ponownie później"
+
+#: assets/js/user-table.js:79
+msgid "Request timed out. Please check your connection and try again."
+msgstr "Przekroczony czas zapytania. Sprawdź swoje połączenie i spróbuj ponownie później"
+
+#: assets/js/user-table.js:81
+msgid "No connection. Please check your internet connection."
+msgstr "Brak połączenia. Sprawdź swoje połączenie z internetem"
+
+#: assets/js/user-table.js:83
+msgid "Server error occurred. Please try again later."
+msgstr "Wystąpił błąd serwera. Spróbuj ponownie później"
