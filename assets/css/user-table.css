@@ -195,8 +195,6 @@
 /* Loading spinner */
 .loading-spinner {
   padding: 40px;
-  border-radius: var(--primary-border-radius);
-  box-shadow: var(--primary-shadow);
 }
 
 .spinner {
@@ -223,9 +221,7 @@
   background: var(--error-background-color);
   color: var(--white-color);
   padding: 20px;
-  border-radius: var(--primary-border-radius);
   text-align: center;
-  box-shadow: var(--main-shadow);
 }
 
 .error-content h3 {
@@ -278,10 +274,6 @@
   }
 
   .details-header {
-    padding: 20px;
-  }
-
-  .details-content {
     padding: 20px;
   }
 }

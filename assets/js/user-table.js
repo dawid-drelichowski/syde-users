@@ -1,6 +1,5 @@
 (function($, wp) {
     'use strict';
-    const detailsContainerFadeDuration = 400; // in ms
     const $document = $(document);
     const { __ } = wp.i18n;
 
@@ -8,6 +7,7 @@
         const $detailsContainer = $('#user-details-container');
         const $detailsContent = $('#user-details-content');
         const $loadingSpinner = $('#loading-spinner');
+        const $errorContainer = $('#error-container');
         const $closeButton = $('#close-details');
 
         // Handle user detail link clicks
@@ -24,21 +24,12 @@
         });
 
         // Handle close button
-        $closeButton.on('click', () => hideUserDetails());
+        $closeButton.on('click', () => hideDetailsContainer());
 
         // ESC key to close details
         $document.on('keydown', (event) => {
-            if (event.keyCode === 27 && $detailsContainer.is(':visible')) {
-                hideUserDetails();
-            }
-        });
-
-        // Click outside to close
-        $document.on('click', (event) => {
-            if ($detailsContainer.is(':visible') && 
-                !$detailsContainer.is(event.target) && 
-                $detailsContainer.has(event.target).length === 0) {
-                hideUserDetails();
+            if (event.keyCode === 27) {
+                hideDetailsContainer();
             }
         });
 
@@ -46,10 +37,10 @@
          * Load user details via AJAX
          */
         const loadUserDetails = (userId) => {
-            // Show loading spinner
-            hideUserDetails(true);
-            $loadingSpinner.fadeIn(detailsContainerFadeDuration);
-
+            hideError();
+            hideDetailsContent();
+            showLoadingSpinner();
+            showDetailsContainer();
 
             $.ajax({
                 url: sydeUsersAjax.ajax_url,
@@ -61,17 +52,16 @@
                 },
                 timeout: 15000, // 15 second timeout
                 success: (response) => {
-                    $loadingSpinner.hide();
+                    hideLoadingSpinner();
                     
                     if (response.success && response.data.html) {
-                        $detailsContent.html(response.data.html);
-                        showUserDetails();
+                        showDetailsContent(response.data.html);
                     } else {
                         showError(__('Unknown error occurred', 'syde-users'));
                     }
                 },
                 error: (xhr, status, error) => {
-                    $loadingSpinner.hide();
+                    hideLoadingSpinner();
                     
                     let message = __('Network error occurred. Please try again.', 'syde-users');
                     
@@ -92,8 +82,10 @@
         /**
          * Show user details container with animation
          */
-        const showUserDetails = () => {
-            $detailsContainer.fadeIn(detailsContainerFadeDuration);
+        const showDetailsContainer = () => {
+            if (!$detailsContainer.is(':visible')) {
+              $detailsContainer.css('display', 'block')
+            };
             
             // Smooth scroll to details
             $('html, body').animate({
@@ -104,19 +96,53 @@
         /**
          * Hide user details container
          */
-        const hideUserDetails = (immediately = false) => {
-            $detailsContainer.fadeOut(immediately ? 0 : detailsContainerFadeDuration);
+        const hideDetailsContainer = () => {
+            if ($detailsContainer.is(':visible')) {
+                $detailsContainer.css('display', 'none');
+            };
+        }
+
+        /**
+         * Show user details content
+         */
+        const showDetailsContent = (content) => {
+            $detailsContent.html(content);
+            $detailsContent.css('display', 'block');
+        }
+
+        /**
+         * Hide user details content
+         */
+        const hideDetailsContent = () => {
+            $detailsContent.css('display', 'none');
+        }
+
+        const showLoadingSpinner = () => {
+            $loadingSpinner.css('display', 'block');
+        }
+
+        /**
+         * Hide loading spinner
+         */
+        const hideLoadingSpinner = () => {
+            $loadingSpinner.css('display', 'none');
         }
 
         /**
          * Show error message in details container
          */
         const showError = (message) => {
-            const $errorContent = $('#error-container').contents().clone();
-            $errorContent.find('[data-error-message]').text(message).removeAttr('data-error-message');
+            $errorContainer.find('[data-error-message]').text(message);
+            $errorContainer.css('display', 'block');
 
-            $detailsContent.html($errorContent);
-            showUserDetails();
+            showDetailsContainer();
+        }
+
+        /**
+         * Hide error message in details container
+         */
+        const hideError = () => {
+            $errorContainer.css('display', 'none');
         }
     });
 })(jQuery, wp);

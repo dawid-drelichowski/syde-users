@@ -71,19 +71,17 @@ if (!defined('ABSPATH')) {
                         <h2><?php esc_html_e('User Details', 'syde-users'); ?></h2>
                         <button id="close-details" class="close-details" aria-label="<?php esc_html_e('Close user details', 'syde-users'); ?>">×</button>
                     </div>
-                    <div id="user-details-content" class="details-content">
+                    <div id="user-details-content" class="details-content" style="display: none;">
                         <!-- User details will be loaded here via AJAX -->
                     </div>
-                </div>
-
-                <div id="loading-spinner" class="loading-spinner" style="display: none;">
-                    <div class="spinner"></div>
-                </div>
-
-                <div id="error-container" style="display: none;">
-                    <div class="error-content">
-                        <h3><?php esc_html_e('Error', 'syde-users'); ?></h3>
-                        <p data-error-message></p>
+                    <div id="error-container" style="display: none;">
+                        <div class="error-content">
+                            <h3><?php esc_html_e('Error', 'syde-users'); ?></h3>
+                            <p data-error-message></p>
+                        </div>
+                    </div>
+                    <div id="loading-spinner" class="loading-spinner" style="display: none;">
+                        <div class="spinner"></div>
                     </div>
                 </div>
             <?php endif; ?>
