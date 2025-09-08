@@ -20,7 +20,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 /* Plugin constants */
 define( 'SYDE_USERS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SYDE_USERS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-const SYDE_USERS_TEXTDOMAIN     = 'syde-users';
 const SYDE_USERS_PLUGIN_VERSION = '1.0.0';
 
 /* Composer autoloader */

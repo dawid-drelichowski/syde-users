@@ -1,25 +1,34 @@
-# German translations for Syde Users Plugin
-# Copyright (C) 2025 Syde Users Plugin
-# This file is distributed under the same license as the Syde Users Plugin package.
-# Translator: Dawid Drelichowski <dawid.drelichowski@gmail.com>, 2025.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: Syde Users 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-05 12:00+0000\n"
+"Last-Translator: \n"
 "Language-Team: German\n"
-"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-09-05 12:00+0000\n"
+"PO-Revision-Date: 2025-09-07T19:52:38+00:00\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Users List"
-msgstr "Benutzerliste"
+msgid "Syde Users"
+msgstr "Syde Benutzer"
 
-msgid "User Details"
-msgstr "Benutzerdetails"
+msgid "A WordPress plugin to display users from external API in a table format."
+msgstr "Ein WordPress-Plugin zur Anzeige von Benutzern aus einer externen API im Tabellenformat"
+
+msgid "Dawid Drelichowski"
+msgstr ""
+
+msgid "Unknown"
+msgstr "Unbekannt"
+
+msgid "Username"
+msgstr "Benutzername"
+
+msgid "N/A"
+msgstr "Nicht verfügbar"
 
 msgid "Email"
 msgstr "E-Mail"
@@ -30,11 +39,20 @@ msgstr "Telefon"
 msgid "Website"
 msgstr "Webseite"
 
+msgid "Address"
+msgstr "Adresse"
+
 msgid "Company"
 msgstr "Unternehmen"
 
-msgid "Address"
-msgstr "Adresse"
+msgid "Users List"
+msgstr "Benutzerliste"
+
+msgid "No Users Available"
+msgstr "Keine Benutzer verfügbar"
+
+msgid "Unable to load users from the external API. Please try again later."
+msgstr "Benutzer können nicht aus der externen API geladen werden. Bitte versuchen Sie es später erneut."
 
 msgid "Id"
 msgstr "Id"
@@ -42,5 +60,31 @@ msgstr "Id"
 msgid "Name"
 msgstr "Name"
 
-msgid "Username"
-msgstr "Benutzername"
+msgid "User Details"
+msgstr "Benutzerdetails"
+
+msgid "Close user details"
+msgstr "Benutzerdetails schließen"
+
+msgid "Error"
+msgstr "Fehler"
+
+#: assets/js/user-table.js:70
+msgid "Unknown error occurred"
+msgstr "Ein unbekannter Fehler ist aufgetreten"
+
+#: assets/js/user-table.js:76
+msgid "Network error occurred. Please try again."
+msgstr "Ein Netzwerkfehler ist aufgetreten. Bitte versuchen Sie es erneut."
+
+#: assets/js/user-table.js:79
+msgid "Request timed out. Please check your connection and try again."
+msgstr "Anfrage-Timeout. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut."
+
+#: assets/js/user-table.js:81
+msgid "No connection. Please check your internet connection."
+msgstr "Keine Verbindung. Bitte überprüfen Sie Ihre Internetverbindung."
+
+#: assets/js/user-table.js:83
+msgid "Server error occurred. Please try again later."
+msgstr "Ein Serverfehler ist aufgetreten. Bitte versuchen Sie es später erneut."

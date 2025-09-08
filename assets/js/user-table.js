@@ -1,7 +1,8 @@
-(function($) {
+(function($, wp) {
     'use strict';
     const detailsContainerFadeDuration = 400; // in ms
     const $document = $(document);
+    const { __ } = wp.i18n;
 
     $document.ready(function() {
         const $detailsContainer = $('#user-details-container');
@@ -15,8 +16,7 @@
             
             const userId = $(event.target).data('user-id');
             if (!userId) {
-                console.error('No user Id found');
-                showError('No user Id found');
+                showError(__('No user Id found'));
                 return;
             }
 
@@ -67,24 +67,24 @@
                         $detailsContent.html(response.data.html);
                         showUserDetails();
                     } else {
-                        showError('Unknown error occurred');
+                        showError(__('Unknown error occurred', 'syde-users'));
                     }
                 },
                 error: (xhr, status, error) => {
                     $loadingSpinner.hide();
                     
-                    let errorMessage = 'Network error occurred. Please try again.';
+                    let message = __('Network error occurred. Please try again.', 'syde-users');
                     
                     if (status === 'timeout') {
-                        errorMessage = 'Request timed out. Please check your connection and try again.';
+                        message = __('Request timed out. Please check your connection and try again.', 'syde-users');
                     } else if (xhr.status === 0) {
-                        errorMessage = 'No connection. Please check your internet connection.';
+                        message = __('No connection. Please check your internet connection.', 'syde-users');
                     } else if (xhr.status >= 500) {
-                        errorMessage = 'Server error occurred. Please try again later.';
+                        message = __('Server error occurred. Please try again later.', 'syde-users');
                     }
                     
                     console.error('AJAX error:', status, error, xhr);
-                    showError(errorMessage);
+                    showError(message);
                 }
             });
         }
@@ -119,4 +119,4 @@
             showUserDetails();
         }
     });
-})(jQuery);
+})(jQuery, wp);
