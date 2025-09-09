@@ -56,7 +56,7 @@ if (!defined('ABSPATH')) {
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="#" class="user-detail-link" data-user-id="<?php echo esc_attr($user['id'] ?? ''); ?>">
+                                        <a href="#" class="user-detail-link email" data-user-id="<?php echo esc_attr($user['id'] ?? ''); ?>">
                                             <?php echo esc_html($user['email'] ?? __('N/A', 'syde-users')); ?>
                                         </a>
                                     </td>

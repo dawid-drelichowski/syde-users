@@ -88,6 +88,13 @@
   text-decoration: none;
 }
 
+.user-detail-link.email {
+  display: block;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* User details */
 .user-details-container {
   border-radius: var(--primary-border-radius);
@@ -180,6 +187,8 @@
   flex: 1;
   color: var(--primary-color);
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .detail-item a {
