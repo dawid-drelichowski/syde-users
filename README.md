@@ -51,8 +51,14 @@ The plugin creates a custom endpoint that displays an HTML table listing users f
 ## Usage
 
 Once activated, visit the custom endpoint:
+
+**For Pretty Permalinks:**
 ```
 https://your-site.com/syde-users/
+```
+**For Plain Permalinks:**
+```
+https://your-site.com/?syde_users=1
 ```
 
 The page will display:
@@ -78,9 +84,25 @@ All API requests are handled server-side as specifically required. This design c
 
 ### Caching Strategy
 
-The plugin implements a two-tier caching system:
-- **Transient Cache**: WordPress transients for user list (15 minutes TTL)
-- **Object Cache**: Individual user details caching (30 minutes TTL)
+**The plugin implements server-side caching using WordPress Transients:**
+
+#### WordPress Transients Choice
+**WordPress Transients were selected over other caching solutions for several reasons:**
+- **Native WordPress Integration**: Transients are built into WordPress core, ensuring compatibility across all WordPress installations without external dependencies
+- **Expiration Handling**: Built-in TTL (Time To Live) management with automatic cleanup of expired data
+- **Network-Aware**: In multisite installations, transients respect network/site boundaries appropriately
+- **Plugin Deactivation Cleanup**: Transients can be easily cleaned up when plugin is deactivated, preventing orphaned cache entries
+- **No External Service Dependencies**: Works out-of-the-box on any WordPress hosting environment without requiring Redis, Memcached, or file system write permissions
+- **WordPress Standards Compliance**: Following WordPress best practices for plugin development
+
+#### Cache Implementation
+- **User List Cache**: WordPress transients for users table data (1 hour TTL)
+- **User Details Cache**: Individual user details cached via transients (1 hour TTL)
+
+**How Transients Work:**
+- **Database Storage**: By default, transients are stored in WordPress database with automatic expiration
+- **Object Cache Integration**: When persistent object cache (Redis/Memcached) is available, transients automatically leverage it for better performance
+- **Automatic Cleanup**: Expired transients are automatically removed, preventing database bloat
 
 This approach balances data freshness with performance while reducing external API calls.
 
@@ -115,9 +137,8 @@ The plugin follows Syde coding standards:
 ```bash
 composer install          # Install dependencies
 composer test             # Run PHPUnit tests
-composer phpcs            # Check code standards
-composer phpcbf           # Fix code standards
-composer autoload-dump    # Regenerate autoloader
+composer cs               # Check code standards
+composer cs-fix           # Fix code standards
 ```
 
 ## Testing
@@ -127,7 +148,6 @@ composer autoload-dump    # Regenerate autoloader
 The plugin includes comprehensive unit tests using:
 - **PHPUnit**: Testing framework
 - **Brain Monkey**: WordPress function mocking
-- **Mockery**: Object mocking
 
 Test coverage includes:
 - API client functionality
@@ -150,8 +170,8 @@ Tests run independently without WordPress or external API dependencies.
 - `phpunit/phpunit`: Unit testing framework
 - `brain/monkey`: WordPress testing utilities  
 - `squizlabs/php_codesniffer`: Code style checking
-- `wp-coding-standards/wpcs`: WordPress coding standards
 - `dealerdirect/phpcodesniffer-composer-installer`: Automatic CS installation
+- `syde/phpcs`: Coding standards for Syde WordPress projects
 
 ## Security Considerations
 
@@ -168,8 +188,8 @@ Tests run independently without WordPress or external API dependencies.
 ## Browser Compatibility
 
 - **Modern Browsers**: Chrome, Firefox, Safari, Edge (last 2 versions)
-- **JavaScript**: ES5 compatible with progressive enhancement
-- **CSS**: Cross-browser compatible with graceful degradation
+- **JavaScript**: ES5 compatible
+- **CSS**: Cross-browser compatible, responsive
 
 ## Error Scenarios Handled
 
@@ -177,7 +197,6 @@ Tests run independently without WordPress or external API dependencies.
 2. **Invalid JSON Response**: Shows user-friendly error
 3. **Network Timeouts**: Implements retry logic with exponential backoff
 4. **Cache Failures**: Falls back to direct API calls
-5. **JavaScript Disabled**: Basic functionality remains available
 
 ## Future Enhancements
 
@@ -188,6 +207,7 @@ Potential improvements (not implemented to maintain focus):
 - Pagination for large user lists
 - Advanced filtering and sorting options
 - Assets minification
+- E2E tests
 
 ## Troubleshooting
 
@@ -199,9 +219,10 @@ Potential improvements (not implemented to maintain focus):
 - Check error logs for specific issues
 
 **Custom Endpoint Not Working**
-- Flush rewrite rules (Settings → Permalinks → Save)
+- **For Pretty Permalinks**: Flush rewrite rules (Settings → Permalinks → Save)
+- **For Plain Permalinks**: Use `?syde_users=1` query parameter format
 - Check .htaccess file permissions
-- Verify permalink structure is not "Plain"
+- **Verify permalink structure - plugin works with both Pretty and Plain permalinks**
 
 **API Requests Failing**
 - Check server's outbound HTTP capabilities
